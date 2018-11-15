@@ -1,0 +1,6 @@
+public class Console{
+	@extend("Console.print")
+	public static void print(string str);
+}
+
+Console.print("hello world!\n");

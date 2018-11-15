@@ -1,0 +1,6 @@
+import system.Console;
+int main(int argc,string argv[]) 
+{ 
+	Console.print("Hello World!");
+	return 0;
+}
