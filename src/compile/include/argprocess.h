@@ -9,6 +9,6 @@ typedef struct zbc_arg {
 	pstringlist srcPathList;
 } zbc_arg;
 
-zbc_arg zbc_arg_process(int argc,char * argv[]);
+extern zbc_arg zbc_arg_process(int argc,char * argv[]);
 
 #endif
