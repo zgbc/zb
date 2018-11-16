@@ -1,5 +1,5 @@
 all:
-	gcc -Wall main.c -o zbc
+	gcc -std=c99 -Wall main.c -o zbc
 
 clean:
 	rm zbc

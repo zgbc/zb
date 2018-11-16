@@ -1,8 +1,8 @@
-all:main.s
-	gcc -Wall main.s -o main
+ZBCLib=../../../../lib/
+ZBC=../../../../compile/zbc
 
-main.s:
-	gcc -S main.c
+all:
+	$(ZBC) -lib $(ZBCLib) -o main main.zb
 
 clean:
 	rm main main.s
