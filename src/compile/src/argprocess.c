@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <string.h>
-#include "../include/stringlist.h"
 #include "../include/argprocess.h"
 
 
@@ -31,13 +30,15 @@ zbc_arg zbc_arg_process(int argc,char * argv[])
 	//char* arrCodePath[argc - i];
 	for (; i < argc; i++) {
 		//arrCodePath[indexCodePath] = argv[i + 1];
-		stringlist_add_last(arg.srcPathList,argv[i + 1]);
+		//printf(argv[i]);
+		stringlist_add_last(arg.srcPathList,argv[i]);
 		indexCodePath++;
 	}
 	//arrCodePath[indexCodePath] = argv[i];
 	printf("strLibPath:%s\n", (arg.strLibPath == NULL) ? "NULL" : arg.strLibPath);
 	printf("strOutputPath:%s\n", (arg.strOutputPath == NULL) ? "NULL" : arg.strOutputPath);
-	printf("arrlen:%d\n", (int)(sizeof(arg.srcPathList) / sizeof(char *)));
+	printf("srcPathList:\n");
+	stringlist_print(arg.srcPathList);
     return arg;
 
 }

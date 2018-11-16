@@ -5,11 +5,11 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "../include/intlist.h"
+#include "../../include/util/intlist.h"
 
 
 pintlist intlist_init(int capacity) {
-    pintlist l = (pintlist) malloc(sizeof(sal));
+    pintlist l = (pintlist) malloc(sizeof(intlist));
     if (capacity < 1) return NULL;
     l->arr = (T*) malloc(sizeof(T) * capacity);
     l->capacity = capacity;

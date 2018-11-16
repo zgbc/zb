@@ -2,7 +2,7 @@
 #define _INTLIST_H
 
 typedef int T;
-typedef struct intlist sintlist;
+typedef struct intlist intlist;
 typedef struct intlist * pintlist;
 
 struct intlist {

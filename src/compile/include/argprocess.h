@@ -1,7 +1,7 @@
 #ifndef _ARGPROCESS_H
 #define _ARGPROCESS_H
 
-#include "../include/stringlist.h"
+#include "util/stringlist.h"
 
 typedef struct zbc_arg {
 	char* strLibPath;

@@ -5,7 +5,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "../include/stringlist.h"
+#include "../../include/util/stringlist.h"
 
 
 pstringlist stringlist_init(int capacity) {
