@@ -1,5 +1,7 @@
 #include <string.h>
 #include <stdio.h>
+#include <stdarg.h>
+#include <stdlib.h>
 /*将str1字符串中第一次出现的str2字符串替换成str3*/
 void replaceFirst(char *str1, char *str2, char *str3)
 {
@@ -114,4 +116,31 @@ void trim(char *str)
 {
 	ltrim(str);
 	rtrim(str);
+}
+/*连接字符串*/
+char * strConcat(int num, ...) {
+	va_list valist;
+	va_start(valist, num);
+	int len = 0;
+	int i;
+	for (i = 0; i < num; i++)
+	{
+		len += strlen(va_arg(valist, char *));
+	}
+	char * strReturn =(char *)malloc(len);
+
+	va_start(valist, num);
+	strcpy(strReturn, va_arg(valist, char *));
+	for (i = 1; i < num; i++)
+	{
+		strcat(strReturn, va_arg(valist, char *));
+	}
+	va_end(valist);
+	return strReturn;
+}
+/*整数转字符串*/
+char * int2str(int n) {
+	char *str= (char *)malloc(10);
+	sprintf(str,"%d",n);
+	return str;
 }

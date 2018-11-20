@@ -10,4 +10,6 @@ extern int lastIndexOf(char *str1, char *str2);
 extern void ltrim(char *str);
 extern void rtrim(char *str);
 extern void trim(char *str);
+extern char * strConcat(int num, ...);
+extern char * int2str(int n);
 #endif

@@ -1,8 +1,8 @@
-#ifndef _PARSE_PARSE_H
+﻿#ifndef _PARSE_PARSE_H
 #define _PARSE_PARSE_H
 
 /*
-�ṹ
+结构
 package
 file
 class
@@ -18,6 +18,7 @@ call
 typedef struct zbc_package zbc_package;
 
 typedef struct zbc_file zbc_file;
+typedef struct zbc_file * zbc_pfile;
 
 typedef struct zbc_type zbc_type;
 
@@ -31,15 +32,20 @@ typedef struct zbc_call zbc_call;
 
 typedef struct zbc_call_arg zbc_call_arg;
 
+typedef struct _zbc_codetree * zbc_pcodetree;
 
 typedef struct _zbc_codetree {
-	char * name;
-	int codeType;//501=callName,511=callArg
-	int valueType;//1=int,11=string
+	char * name;//名称
+	char * _asmname;//编译名称
+	int codeType;//代码类型 501=callName,511=callArg
+	int valueType;//值类型 1=int,11=string
+	bool isVariable;//可变类型 false=const 常量,true=var 变量
 	char * value;
 	int sizeSon;
-	struct _zbc_codetree *son[8];
+	struct _zbc_codetree *firstChild;//第一个子节点
+	struct _zbc_codetree *nextSibing;//下一个节点
 } zbc_codetree;
+
 
 //1xx
 struct zbc_package {
@@ -49,12 +55,12 @@ struct zbc_package {
 //2xx
 struct zbc_file {
 	char * path;
-	int indexListLineCodeTree;
-	zbc_codetree* listLineCodeTree[10];
+	int sizeLineCodeTree;
+	zbc_codetree* firstLineCodeTree;
 
-	intlist zbclass;
+	/*intlist zbclass;
 	intlist zbfunction;
-	char * body;
+	char * body;*/
 };
 
 struct zbc_type {
@@ -92,9 +98,9 @@ struct zbc_call_arg {
 
 
 
-extern zbc_file zbc_parse(const char * file);
+extern zbc_pfile zbc_parse(const char * file);
 
-extern zbc_codetree* zbc_parse_line(char * str);
+extern zbc_pcodetree zbc_parse_line(char * str);
 
 extern bool zbc_char_is_blank(char c);
 
@@ -110,6 +116,8 @@ extern bool zbc_char_is_rbrackets(char c);
 
 extern bool zbc_char_is_symbol(char c);
 
-extern zbc_codetree zbc_get_const(char * str);
+extern zbc_pcodetree zbc_get_const(char * str);
+
+extern void print_codeTree(zbc_pcodetree zbCodeTree);
 
 #endif // !_PARSE_PARSE_H
